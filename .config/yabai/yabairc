@@ -23,6 +23,7 @@ yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Notion$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
 
 # global settings
 yabai -m config mouse_follows_focus          off

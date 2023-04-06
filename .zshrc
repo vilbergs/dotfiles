@@ -63,6 +63,10 @@ ZSH_THEME="agnoster"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+
+
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -71,8 +75,6 @@ ZSH_THEME="agnoster"
 plugins=(
     git 
     npm
-    zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -132,4 +134,12 @@ alias gpick='git checkout $(git branch | fzf)'
 alias prs='gh pr list | tee'
 alias cat='bat'
 alias findalias='alias | grep'
+alias yadd="yalc add"
 
+export PATH="/Users/vilberg/.deno/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
