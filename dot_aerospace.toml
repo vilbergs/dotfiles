@@ -1,0 +1,104 @@
+# AeroSpace config — i3/Omarchy-style bindings
+# Super = Caps Lock via Raycast Hyper key (cmd-alt-ctrl, *without* shift)
+# Super+Shift = cmd-alt-ctrl-shift
+
+config-version = 2
+
+after-startup-command = []
+start-at-login = true
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = false
+persistent-workspaces = []
+on-mode-changed = []
+focus-follows-mouse.enabled = false
+
+key-mapping.preset = 'qwerty'
+
+gaps.inner.horizontal = 4
+gaps.inner.vertical =   4
+gaps.outer.left =       8
+gaps.outer.bottom =     8
+gaps.outer.top =        8
+gaps.outer.right =      8
+
+[mode.main.binding]
+    # Apps
+    cmd-alt-ctrl-enter = 'exec-and-forget open -na Ghostty'
+
+    # Windows
+    cmd-alt-ctrl-w = 'close'
+    cmd-alt-ctrl-f = 'fullscreen'
+    cmd-alt-ctrl-t = 'layout floating tiling'
+    cmd-alt-ctrl-j = 'layout tiles horizontal vertical'  # toggle split direction
+    cmd-alt-ctrl-g = 'layout accordion tiles'            # toggle "tabbed" group
+
+    # Focus
+    cmd-alt-ctrl-left =  'focus left'
+    cmd-alt-ctrl-down =  'focus down'
+    cmd-alt-ctrl-up =    'focus up'
+    cmd-alt-ctrl-right = 'focus right'
+
+    # Move/swap window
+    cmd-alt-ctrl-shift-left =  'move left'
+    cmd-alt-ctrl-shift-down =  'move down'
+    cmd-alt-ctrl-shift-up =    'move up'
+    cmd-alt-ctrl-shift-right = 'move right'
+
+    # Resize
+    cmd-alt-ctrl-minus = 'resize smart -50'
+    cmd-alt-ctrl-equal = 'resize smart +50'
+
+    # Workspaces
+    cmd-alt-ctrl-1 = 'workspace 1'
+    cmd-alt-ctrl-2 = 'workspace 2'
+    cmd-alt-ctrl-3 = 'workspace 3'
+    cmd-alt-ctrl-4 = 'workspace 4'
+    cmd-alt-ctrl-5 = 'workspace 5'
+    cmd-alt-ctrl-6 = 'workspace 6'
+    cmd-alt-ctrl-7 = 'workspace 7'
+    cmd-alt-ctrl-8 = 'workspace 8'
+    cmd-alt-ctrl-9 = 'workspace 9'
+    cmd-alt-ctrl-0 = 'workspace 10'
+
+    # Move window to workspace (and follow it)
+    cmd-alt-ctrl-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
+    cmd-alt-ctrl-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
+    cmd-alt-ctrl-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
+    cmd-alt-ctrl-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
+    cmd-alt-ctrl-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
+    cmd-alt-ctrl-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+    cmd-alt-ctrl-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
+    cmd-alt-ctrl-shift-8 = 'move-node-to-workspace --focus-follows-window 8'
+    cmd-alt-ctrl-shift-9 = 'move-node-to-workspace --focus-follows-window 9'
+    cmd-alt-ctrl-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
+
+    cmd-alt-ctrl-tab = 'workspace --wrap-around next'
+    cmd-alt-ctrl-shift-tab = 'workspace --wrap-around prev'
+    cmd-alt-ctrl-backtick = 'workspace-back-and-forth'
+
+    # Service mode: Super+Shift+; then a key
+    cmd-alt-ctrl-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    cmd-alt-ctrl-shift-left =  ['join-with left', 'mode main']
+    cmd-alt-ctrl-shift-down =  ['join-with down', 'mode main']
+    cmd-alt-ctrl-shift-up =    ['join-with up', 'mode main']
+    cmd-alt-ctrl-shift-right = ['join-with right', 'mode main']
+
+# Float things that don't make sense tiled
+[[on-window-detected]]
+    if.app-id = 'com.apple.systempreferences'
+    run = 'layout floating'
