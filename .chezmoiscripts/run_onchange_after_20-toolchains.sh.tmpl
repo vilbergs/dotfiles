@@ -18,7 +18,7 @@ uv python install 3.14
 
 skills="$HOME/sites/vilbergs/claude-skills"
 [ -d "$skills/.git" ] || git clone https://github.com/vilbergs/claude-skills.git "$skills"
-for crate in asc notion prkit things; do
+for crate in asc notion prkit; do
   "$HOME/.cargo/bin/cargo" install --locked --path "$skills/crates/$crate"
 done
 {{ end -}}

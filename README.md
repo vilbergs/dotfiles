@@ -11,7 +11,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply vilbergs/do
 It asks once whether this is a `work` or `personal` machine. On a work machine it then installs Homebrew,
 the CLIs in `~/.Brewfile`, oh-my-zsh, Node 24/22 via fnm, Rust via rustup,
 Python via uv, and the claude-skills binaries. Homebrew asks for the sudo password once.
-App Store apps (Xcode, TestFlight, Developer, Slack, Things, 1Password for Safari) are installed by hand.
+App Store apps (Xcode, TestFlight, Developer, Slack) are installed by hand.
 
 On a personal machine nothing is installed automatically: run `brew bundle --global` yourself.
 
