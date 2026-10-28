@@ -4,7 +4,6 @@ macOS config for my machines, managed with [chezmoi](https://www.chezmoi.io).
 
 ## New Mac
 
-
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply vilbergs/dotfiles
 ```
