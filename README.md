@@ -4,15 +4,15 @@ macOS config for my machines, managed with [chezmoi](https://www.chezmoi.io).
 
 ## New Mac
 
-Sign in to the App Store first (for `mas`), then:
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply vilbergs/dotfiles
 ```
 
 It asks once whether this is a `work` or `personal` machine. On a work machine it then installs Homebrew,
-everything in `~/.Brewfile` (CLIs, casks, App Store apps), oh-my-zsh, Node 24/22 via fnm, Rust via rustup,
+everything in `~/.Brewfile` (CLIs and apps), oh-my-zsh, Node 24/22 via fnm, Rust via rustup,
 Python via uv, and the claude-skills binaries. Homebrew asks for the sudo password once.
+App Store apps (Xcode, TestFlight, Developer, Slack, Things, 1Password for Safari) are installed by hand.
 
 On a personal machine nothing is installed automatically: run `brew bundle --global` yourself.
 
