@@ -20,19 +20,9 @@ brew "uv"
 tap "oven-sh/bun"
 brew "oven-sh/bun/bun"
 
-# Apps
+# CLIs and fonts shipped as casks
 cask "1password-cli"
-cask "ghostty"
-cask "zed"
-cask "raycast"
-cask "arc"
-cask "obsidian"
-cask "tailscale-app"
-cask "shottr"
-cask "bettertouchtool"
-cask "logi-options+"
 cask "claude-code"
-cask "t3-code"
 cask "font-fira-code"
 
 {{- if eq .machine "work" }}
@@ -42,12 +32,6 @@ brew "azure-cli"
 brew "swiftlint"
 brew "swiftformat"
 cask "gcloud-cli"
-cask "herd"
-cask "tableplus"
-cask "figma"
-cask "linear"
-cask "notion"
-cask "swiftformat-for-xcode"
 
 {{- end }}
 {{- if eq .machine "personal" }}
