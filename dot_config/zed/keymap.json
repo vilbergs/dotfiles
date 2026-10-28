@@ -1,0 +1,88 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-d": "editor::DeleteLine",
+      "cmd-/": ["editor::ToggleComments", { "advance_downwards": false }],
+    },
+  },
+  {
+    "context": "Workspace && !Terminal",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-r": ["projects::OpenRecent", { "create_new_window": false }],
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "ContextEditor > Editor",
+    "bindings": {
+      "ctrl-alt-g": "search::SelectPreviousMatch",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-alt-g": "search::SelectPreviousMatch",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-1": ["pane::ActivateItem", 0],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-2": ["pane::ActivateItem", 1],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-3": ["pane::ActivateItem", 2],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-4": ["pane::ActivateItem", 3],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-5": ["pane::ActivateItem", 4],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-6": ["pane::ActivateItem", 5],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-7": ["pane::ActivateItem", 6],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-8": ["pane::ActivateItem", 7],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-9": ["pane::ActivateItem", 8],
+    },
+  },
+]

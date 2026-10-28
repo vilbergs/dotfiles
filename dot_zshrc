@@ -1,0 +1,71 @@
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="amuse"
+DISABLE_UPDATE_PROMPT="true"
+
+plugins=(
+    git
+    docker # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/docker/README.md
+    docker-compose # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Fix slow pasting with autosuggest
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+alias myip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
+alias gpick='git checkout $(git branch --sort=-committerdate | fzf)'
+alias cat='bat'
+alias cronl="crontab -l | bat"
+alias code="code -r"
+alias glo="git log --oneline --date=short --format=\"%C(yellow)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(green)(%an)%C(reset)\""
+alias takeout="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --add-host=host.docker.internal:host-gateway -it tighten/takeout:latest"
+alias pwtest="PLAYWRIGHT_HTML_OPEN=never npx playwright test"
+
+killport() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: killport <port>"
+    return 1
+  fi
+
+  local pids
+  pids=$(lsof -t -i :"$1")
+
+  if [[ -z "$pids" ]]; then
+    echo "No process found on port $1"
+    return 0
+  fi
+
+  echo "Killing process(es) on port $1: $pids"
+  kill -9 $pids
+}
+
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# bun completions (disabled — hijacked file-path tab completion)
+# [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
+
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Google Cloud SDK: PATH and completion
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi

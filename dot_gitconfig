@@ -1,0 +1,29 @@
+[user]
+	name = Vilberg
+	email = vilbergs@gmail.com
+[core]
+	excludesfile = /Users/vilberg/.gitignore_global
+	editor = nvim
+	compression = 0
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[pull]
+	rebase = true
+[sequence]
+	editor = rebase-editor
+[http]
+	postBuffer = 157286400
+	lowSpeedLimit = 0
+	lowSpeedTime = 999999
+[pack]
+	window = 1
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential

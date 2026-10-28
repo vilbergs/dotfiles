@@ -1,0 +1,102 @@
+{
+  "cli_default_open_behavior": "existing_window",
+  "diff_view_style": "unified",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+  },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+    "sort_by_path": true,
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow",
+          "always_allow": [
+            {
+              "pattern": "^git\\s+log(\\s|$)",
+            },
+            {
+              "pattern": "^git\\s+diff(\\s|$)",
+            },
+            {
+              "pattern": "^npx\\s+vitest(\\s|$)",
+            },
+          ],
+        },
+      },
+    },
+    "dock": "right",
+    "default_profile": "write",
+    "default_model": {
+      "effort": "high",
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+      "enable_thinking": true,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+    "thread_summary_model": {
+      "effort": "high",
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+    },
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "theme": "Ayu Dark",
+  "base_keymap": "VSCode",
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "experimental.theme_overrides": {
+    "text.muted": "#C2C9D3FF",
+  },
+  "lsp": {
+    "cucumber": {
+      "settings": {
+        "glue": ["features/steps/**/*.steps.ts"],
+      },
+    },
+  },
+
+  "languages": {
+    "Rust": {
+      "show_edit_predictions": false,
+    },
+
+    "PHP": {
+      "language_servers": ["intelephense", "!phpactor", "..."],
+      "formatter": {
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "temp=$(mktemp) && cat > $temp && ./vendor/bin/pint --quiet $temp && cat $temp && rm $temp",
+          ],
+        },
+      },
+    },
+  },
+}

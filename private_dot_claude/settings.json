@@ -1,0 +1,38 @@
+{
+  "attribution": {
+    "commit": ""
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": false,
+    "t3-pstack@t3-pstack": true
+  },
+  "extraKnownMarketplaces": {
+    "chrome-devtools-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "ChromeDevTools/chrome-devtools-mcp"
+      }
+    },
+    "t3-pstack": {
+      "source": {
+        "source": "github",
+        "repo": "chhoumann/t3-pstack"
+      },
+      "autoUpdate": true
+    }
+  },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "mcpServers": {
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--browserUrl=http://127.0.0.1:9222"
+      ]
+    }
+  }
+}
