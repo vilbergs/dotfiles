@@ -1,0 +1,24 @@
+{{ if eq .machine "work" -}}
+#!/bin/bash
+# Bump the versions here to reinstall: node 24 22, rust stable nightly, python 3.14
+set -euo pipefail
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+for v in 24 22; do fnm install "$v"; done
+fnm default 24
+eval "$(fnm env --shell bash)"
+npm install -g rebase-editor
+
+[ -x "$HOME/.cargo/bin/rustup" ] || curl -fsSL https://sh.rustup.rs | sh -s -- -y --no-modify-path
+"$HOME/.cargo/bin/rustup" toolchain install stable nightly --profile default
+"$HOME/.cargo/bin/rustup" default nightly
+
+uv python install 3.14
+
+skills="$HOME/sites/vilbergs/claude-skills"
+[ -d "$skills/.git" ] || git clone https://github.com/vilbergs/claude-skills.git "$skills"
+for crate in asc notion prkit things; do
+  "$HOME/.cargo/bin/cargo" install --locked --path "$skills/crates/$crate"
+done
+{{ end -}}

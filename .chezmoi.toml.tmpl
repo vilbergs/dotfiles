@@ -1,0 +1,8 @@
+{{- $machine := promptChoiceOnce . "machine" "Which machine is this" (list "work" "personal") -}}
+{{- $clone := joinPath .chezmoi.homeDir "sites/vilbergs/dotfiles" -}}
+{{- if stat (joinPath $clone ".git") }}
+sourceDir = {{ $clone | quote }}
+{{- end }}
+
+[data]
+machine = {{ $machine | quote }}

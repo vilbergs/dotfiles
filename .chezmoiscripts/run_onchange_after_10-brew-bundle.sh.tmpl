@@ -1,0 +1,8 @@
+{{ if eq .machine "work" -}}
+#!/bin/bash
+# Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
+set -euo pipefail
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew bundle --global --no-upgrade
+{{ end -}}

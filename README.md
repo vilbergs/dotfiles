@@ -2,12 +2,26 @@
 
 macOS config for my machines, managed with [chezmoi](https://www.chezmoi.io).
 
+## New Mac
+
+Sign in to the App Store first (for `mas`), then:
+
 ```sh
-brew install chezmoi
-chezmoi init --apply vilbergs/dotfiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply vilbergs/dotfiles
 ```
 
-Day to day: edit the live file, then `chezmoi re-add <file>`; on the other machine, `chezmoi update`.
+It asks once whether this is a `work` or `personal` machine. On a work machine it then installs Homebrew,
+everything in `~/.Brewfile` (CLIs, casks, App Store apps), oh-my-zsh, Node 24/22 via fnm, Rust via rustup,
+Python via uv, and the claude-skills binaries. Homebrew asks for the sudo password once.
+
+On a personal machine nothing is installed automatically: run `brew bundle --global` yourself.
+
+## Day to day
+
+- Edit a live file, then `chezmoi re-add <file>`. On the other machine, `chezmoi update`.
+- Add a package to `dot_Brewfile.tmpl`. `chezmoi apply` reruns `brew bundle` when the Brewfile changes.
+- Bump a version in `.chezmoiscripts/run_onchange_after_20-toolchains.sh.tmpl` to rerun the toolchain installs.
+
 Secrets are not in this repo. They come from 1Password.
 
 The `master` branch holds the old (pre-2026, mostly Linux) config.

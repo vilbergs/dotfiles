@@ -1,2 +1,2 @@
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 export HQ_VAULT="$HOME/Documents/Obsidian/hq"

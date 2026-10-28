@@ -1,0 +1,97 @@
+# Installed by chezmoi with `brew bundle --global`. Edit here, then `chezmoi apply`.
+
+# Shell and everyday CLIs
+brew "chezmoi"
+brew "atuin"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "neovim"
+brew "bat"
+brew "fzf"
+brew "ripgrep"
+brew "jq"
+brew "fx"
+brew "csvlens"
+brew "gh"
+brew "mas"
+
+# Toolchains (versions are installed by the toolchains script)
+brew "fnm"
+brew "uv"
+tap "oven-sh/bun"
+brew "oven-sh/bun/bun"
+
+# Apps
+cask "1password"
+cask "1password-cli"
+cask "ghostty"
+cask "zed"
+cask "visual-studio-code"
+cask "orbstack"
+cask "raycast"
+cask "arc"
+cask "google-chrome"
+cask "obsidian"
+cask "tailscale-app"
+cask "shottr"
+cask "bettertouchtool"
+cask "logi-options+"
+cask "claude-code"
+cask "t3-code"
+cask "font-fira-code"
+
+mas "Things", id: 904280696
+mas "1Password for Safari", id: 1569813296
+{{- if eq .machine "work" }}
+
+# Work: Teachiq / Exam.net
+brew "azure-cli"
+brew "glab"
+brew "watchman"
+brew "swiftlint"
+brew "swiftformat"
+cask "gcloud-cli"
+cask "herd"
+cask "tableplus"
+cask "proxyman"
+cask "figma"
+cask "linear"
+cask "notion"
+cask "notion-calendar"
+cask "microsoft-teams"
+cask "ngrok"
+cask "mitmproxy"
+cask "swiftformat-for-xcode"
+
+mas "Xcode", id: 497799835
+mas "TestFlight", id: 899247664
+mas "Developer", id: 640199958
+mas "Slack", id: 803453959
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Microsoft Excel", id: 462058435
+{{- end }}
+{{- if eq .machine "personal" }}
+
+# Personal
+brew "flyctl"
+brew "caddy"
+brew "nmap"
+cask "anytype"
+cask "discord"
+cask "spotify"
+cask "steam"
+cask "vlc"
+cask "kdenlive"
+cask "vuescan"
+cask "raspberry-pi-imager"
+cask "balenaetcher"
+cask "openscad"
+
+mas "GarageBand", id: 682658836
+mas "Messenger", id: 1480068668
+mas "WhatsApp", id: 310633997
+mas "HP Smart", id: 1474276998
+mas "Medis", id: 1579200037
+{{- end }}
