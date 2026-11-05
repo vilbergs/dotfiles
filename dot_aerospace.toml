@@ -4,7 +4,12 @@
 
 config-version = 2
 
-after-startup-command = []
+after-startup-command = [
+    'exec-and-forget open -a Ghostty',
+    'exec-and-forget open -a "Google Chrome"',
+    'exec-and-forget open -a "T3 Code (Beta)"',
+    'exec-and-forget open -a Obsidian',
+]
 start-at-login = true
 auto-reload-config = true
 
@@ -33,6 +38,8 @@ gaps.outer.right =      8
 [mode.main.binding]
     # Apps
     cmd-alt-ctrl-enter = 'exec-and-forget open -na Ghostty'
+    cmd-alt-ctrl-o = 'exec-and-forget open -a Obsidian'
+    cmd-alt-ctrl-s = 'exec-and-forget open -a Slack'
 
     # Windows
     cmd-alt-ctrl-w = 'close'
@@ -47,11 +54,13 @@ gaps.outer.right =      8
     cmd-alt-ctrl-up =    'focus up'
     cmd-alt-ctrl-right = 'focus right'
 
-    # Move/swap window
-    cmd-alt-ctrl-shift-left =  'move left'
-    cmd-alt-ctrl-shift-down =  'move down'
-    cmd-alt-ctrl-shift-up =    'move up'
-    cmd-alt-ctrl-shift-right = 'move right'
+    # Move/swap window; at the monitor edge the window crosses to the adjacent monitor.
+    # Omarchy keeps "move window to monitor" on Super+Shift+Ctrl+arrow, but Super here
+    # is Hyper (cmd-alt-ctrl), so Ctrl adds nothing and both actions share this chord.
+    cmd-alt-ctrl-shift-left =  'move --boundaries all-monitors-outer-frame left'
+    cmd-alt-ctrl-shift-down =  'move --boundaries all-monitors-outer-frame down'
+    cmd-alt-ctrl-shift-up =    'move --boundaries all-monitors-outer-frame up'
+    cmd-alt-ctrl-shift-right = 'move --boundaries all-monitors-outer-frame right'
 
     # Resize
     cmd-alt-ctrl-minus = 'resize smart -50'
@@ -102,3 +111,55 @@ gaps.outer.right =      8
 [[on-window-detected]]
     if.app-id = 'com.apple.systempreferences'
     run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'org.flameshot.Flameshot'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'net.vilbergs.crabshot'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.1password.1password'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.raycast.macos'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.logi.optionsplus'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'io.tailscale.ipn.macsys'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'de.beyondco.herd'
+    run = 'layout floating'
+
+# Browser picture-in-picture video windows
+[[on-window-detected]]
+    if.window-title-regex-substring = '(?i)picture.in.picture'
+    run = 'layout floating'
+
+# Ghostty's native tabs show up as separate windows; force them to tile
+# so a new tab stays in the existing tile instead of reshuffling the layout
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = ['layout tiling', 'move-node-to-workspace 1']
+
+# Pin apps to workspaces
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.t3tools.t3code'
+    run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace 5'

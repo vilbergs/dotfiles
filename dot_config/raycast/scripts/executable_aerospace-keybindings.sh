@@ -27,6 +27,7 @@ def pretty(k):
 def describe(cmd):
     cmd = " ; ".join(cmd) if isinstance(cmd, list) else cmd
     cmd = re.sub(r"exec-and-forget\s+open -na ", "open ", cmd)
+    cmd = re.sub(r"move --boundaries all-monitors-outer-frame (\w+)", r"move window \1 (crosses to \1 monitor at edge)", cmd)
     return cmd.replace("move-node-to-workspace --focus-follows-window", "move window to workspace")
 
 rows, ws, mv = [], False, False
