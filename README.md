@@ -1,6 +1,7 @@
 # dotfiles
 
 macOS config for my machines, managed with [chezmoi](https://www.chezmoi.io).
+A Linux host gets only the Herdr config (`~/.config/herdr`); `.chezmoiignore` hides everything else off macOS.
 
 ## New Mac
 
@@ -14,6 +15,14 @@ Python via uv, and the claude-skills binaries. Homebrew asks for the sudo passwo
 App Store apps (Xcode, TestFlight, Developer, Slack) are installed by hand.
 
 On a personal machine nothing is installed automatically: run `brew bundle --global` yourself.
+
+## Linux host (Herdr only)
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
+~/.local/bin/chezmoi init --apply --promptChoice machine=personal https://github.com/vilbergs/dotfiles.git
+herdr server reload-config
+```
 
 ## Day to day
 
