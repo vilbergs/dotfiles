@@ -16,7 +16,13 @@ panel_bg = "black"
 new_cwd = "follow"
 
 [keys]
+{{- /* Herdr before 0.9.5 accepts a single prefix string, not a list */ -}}
+{{- $herdr := output "herdr" "--version" | trim | trimPrefix "herdr " }}
+{{- if semverCompare ">=0.9.5" $herdr }}
 prefix = ["ctrl+space", "§"]
+{{- else }}
+prefix = "ctrl+space"
+{{- end }}
 
 # Config and help
 reload_config = "prefix+q"

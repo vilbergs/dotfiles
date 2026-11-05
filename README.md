@@ -20,7 +20,7 @@ On a personal machine nothing is installed automatically: run `brew bundle --glo
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
-~/.local/bin/chezmoi init --apply --promptChoice machine=personal https://github.com/vilbergs/dotfiles.git
+~/.local/bin/chezmoi init --apply --promptChoice "Which machine is this=personal" https://github.com/vilbergs/dotfiles.git
 herdr server reload-config
 ```
 
